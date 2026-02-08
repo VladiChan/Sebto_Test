@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using SebTest.Data;
 using SebTest.Interfaces;
 using SebTest.Services;
+using SebTest.Models.Requests;
 
 namespace SebTest.Controllers;
 
@@ -30,7 +31,7 @@ public class AuthController : ControllerBase
 
     // POST: api/auth/register
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+    public async Task<IActionResult> Register([FromBody] RegisterDto request)
     {
         if (string.IsNullOrWhiteSpace(request.Username) ||
             string.IsNullOrWhiteSpace(request.Password))
@@ -57,7 +58,7 @@ public class AuthController : ControllerBase
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
         await _logServices.LogAsync(
-            message: $"Регистрация успешна: {request.Username}",
+            message: $"Регистрация успешна: "+request.Username,
             level: "Info",
             userId: user.Id
         );
@@ -68,7 +69,7 @@ public class AuthController : ControllerBase
 
     // POST: api/auth/login
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginRequest request)
+    public async Task<IActionResult> Login([FromBody] LoginDto request)
     {
 
         var user = await _context.Users
@@ -97,14 +98,5 @@ public class AuthController : ControllerBase
     }
 }
 
-public class RegisterRequest
-{
-    public string Username { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
-}
 
-public class LoginRequest
-{
-    public string Username { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
-}
+

@@ -162,3 +162,4 @@
 /Users/dmitry/Desktop/Test/SebTest/SebTest/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/dmitry/Desktop/Test/SebTest/SebTest/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
 /Users/dmitry/Desktop/Test/SebTest/SebTest/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/dmitry/Desktop/Test/SebTest/SebTest/obj/Debug/net9.0/SebTest.sourcelink.json
